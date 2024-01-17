@@ -11,13 +11,14 @@ function Register() {
     fullName: "",
     email: "",
     password: "",
+    gender: "",
+    radioGender: "",
   };
 
   const [data, setData] = useState(initialProfile);
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-
   const userRegister = () => {
     toast.success("Register successfully !", {
       position: toast.POSITION.TOP_RIGHT,
@@ -62,6 +63,20 @@ function Register() {
               onChange={handleChange}
               required
             />
+          </div>
+          <div className="d-grid gap-2 mt-3">
+            <label>Gender</label>
+            <select name="gender" onChange={handleChange}>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div className="d-grid gap-2 mt-3" onChange={handleChange}>
+            <label>Gender</label>
+            <input type="radio" name="radioGender" value="male" />
+            Male
+            <input type="radio" name="radioGender" value="female" />
+            Female
           </div>
           <div className="d-grid gap-2 mt-3">
             <button
