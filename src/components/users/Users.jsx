@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useTable, useSortBy } from "react-table";
 import "./styles.css";
 
@@ -7,6 +8,7 @@ function Users() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 25;
+  const navigate = useNavigate();
 
   const columns = useMemo(
     () => [
@@ -51,8 +53,8 @@ function Users() {
       .get(
         `https://api.github.com/users?since=${
           currentPage * itemsPerPage
-        }&per_page=${itemsPerPage}`,
-        config
+        }&per_page=${itemsPerPage}`
+        // config
       )
       .then((res) => {
         setData([...data, ...res.data]);
@@ -76,6 +78,10 @@ function Users() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [currentPage]);
+
+  const getUserInfo = (value) => {
+    navigate(`/user/${value.node_id}`, { state: value });
+  };
 
   return (
     <>
@@ -108,7 +114,13 @@ function Users() {
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td
+                      {...cell.getCellProps()}
+                      value={row.values}
+                      onClick={(e) => getUserInfo(row.values)}
+                    >
+                      {cell.render("Cell")}
+                    </td>
                   ))}
                 </tr>
               );
