@@ -23,7 +23,7 @@ root.render(
         <Route path="/login" exact element={<Login />} />
         <Route path="/users" exact element={<Users />} />
         <Route path="/user/:id" exact element={<User />} />
-        <Route path="test" exact element={<Test />} />
+        <Route path="/test" exact element={<Test />} />
       </Routes>
     </Router>
     <Footer />
