@@ -10,6 +10,7 @@ import Users from "./components/users/Users";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import User from "./components/user/User";
+import Test from "./components/test/Test";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,7 +22,8 @@ root.render(
         <Route path="/signup" exact element={<Register />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/users" exact element={<Users />} />
-        <Route path="/user/:id" element={<User />} />
+        <Route path="/user/:id" exact element={<User />} />
+        <Route path="test" exact element={<Test />} />
       </Routes>
     </Router>
     <Footer />

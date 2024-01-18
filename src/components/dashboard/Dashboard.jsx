@@ -11,6 +11,7 @@ function Dashboard() {
   useEffect(() => {
     setTimeout(() => {
       navigate("/signup");
+      // navigate("/test");
     }, 2000);
   }, []);
 
