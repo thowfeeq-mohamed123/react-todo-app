@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../App.css";
 import { AuthContext } from "../../Contexts";
+// import Test from "../test/Test";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function Dashboard() {
   return (
     <div className="Auth-form-container">
       <h1>Welcome to Dashboard</h1>
+      {/* <Test message="Hello" /> */}
     </div>
   );
 }
