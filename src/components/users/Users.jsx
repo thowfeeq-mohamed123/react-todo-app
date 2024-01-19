@@ -53,8 +53,8 @@ function Users() {
       .get(
         `https://api.github.com/users?since=${
           currentPage * itemsPerPage
-        }&per_page=${itemsPerPage}`
-        // config
+        }&per_page=${itemsPerPage}`,
+        config
       )
       .then((res) => {
         setData([...data, ...res.data]);
